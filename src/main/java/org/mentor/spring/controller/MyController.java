@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
 @Controller
 public class MyController {
 
@@ -15,6 +17,8 @@ public class MyController {
     @RequestMapping (value = "/", method = RequestMethod.GET)
     public ModelAndView  userForm() {
         ModelAndView modelAndView = new ModelAndView();
+        List list =  userService.listData();
+        modelAndView.addObject("list", list);
         modelAndView.setViewName("tableserv");
         return modelAndView;
     }

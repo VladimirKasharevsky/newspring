@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.mentor.spring.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -12,8 +13,12 @@ import java.util.List;
 public class UserDaoHibernateImpl implements UserDao{
 
 
-//    @Autowired
-     private  SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
+
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public void createUser(User user) {

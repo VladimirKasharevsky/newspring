@@ -14,11 +14,13 @@ public class UserServiceImpl implements UserService {
     UserDao userDao = new UserDaoHibernateImpl();
 
     @Override
+    @Transactional
     public void createUser(User user) {
         userDao.createUser(user);
     }
 
     @Override
+    @Transactional
     public void deleteUser(String id) {
         userDao.deleteUser(id);
     }
@@ -30,11 +32,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void updateUser(User user) {
         userDao.updateUser(user);
     }
 
     @Override
+    @Transactional
     public User getUserById(String id) {
         return userDao.selectDataById(id);
     }
