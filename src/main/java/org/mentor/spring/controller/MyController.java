@@ -2,6 +2,7 @@ package org.mentor.spring.controller;
 
 import org.mentor.spring.service.UserService;
 import org.mentor.spring.service.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,7 +13,13 @@ import java.util.List;
 @Controller
 public class MyController {
 
-    private UserService userService = new UserServiceImpl();
+
+    private UserService userService;
+
+    @Autowired
+    public void setFilmService(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping (value = "/", method = RequestMethod.GET)
     public ModelAndView  userForm() {
