@@ -1,5 +1,6 @@
 package org.mentor.spring.dao;
 
+import org.hibernate.SessionFactory;
 import org.mentor.spring.model.User;
 
 import java.util.List;

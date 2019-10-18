@@ -6,17 +6,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.mentor.spring.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-
+@Component
 public class UserDaoHibernateImpl implements UserDao{
-
-
+    
     private SessionFactory sessionFactory;
 
     @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
+
         this.sessionFactory = sessionFactory;
     }
 
@@ -70,8 +71,9 @@ public class UserDaoHibernateImpl implements UserDao{
     @Override
     public List<User> selectData() {
         try {
-            Session session = sessionFactory.openSession();
-            Query query = session.createQuery("from User");
+//           Session session = sessionFactory.openSession();
+            Session session = sessionFactory.getCurrentSession();
+            Query query = session.createQuery("from User", User.class);
             List<User> list =  query.list();
             return list;
         } catch (Exception e) {
