@@ -12,7 +12,7 @@ import java.util.List;
 
 @Component
 public class UserDaoHibernateImpl implements UserDao{
-    
+
     private SessionFactory sessionFactory;
 
     @Autowired
