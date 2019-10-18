@@ -24,12 +24,8 @@ public class UserDaoHibernateImpl implements UserDao{
     @Override
     public void createUser(User user) {
         try {
-            Session session = sessionFactory.openSession();
-            Transaction transaction = session.beginTransaction();
+            Session session = sessionFactory.getCurrentSession();
             session.save(user);
-            transaction.commit();
-
-            session.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -39,13 +35,10 @@ public class UserDaoHibernateImpl implements UserDao{
     @Override
     public void deleteUser(String id) {
         try {
-            Session session = sessionFactory.openSession();
-            Transaction transaction = session.beginTransaction();
+            Session session = sessionFactory.getCurrentSession();
             User user;
             user = (User)session.load(User.class,Long.parseLong(id));
             session.delete(user);
-            transaction.commit();
-            session.close() ;
         } catch (Exception e) {
             e.printStackTrace();
         }
