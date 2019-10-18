@@ -3,7 +3,6 @@ package org.mentor.spring.dao;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.mentor.spring.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -47,15 +46,13 @@ public class UserDaoHibernateImpl implements UserDao{
     @Override
     public void updateUser(User user) {
         try {
-            Session session = sessionFactory.openSession();
-            session.beginTransaction();
+            Session session = sessionFactory.getCurrentSession();
             Query query = session.createQuery("update User set name = :newName, password = :newPassword, role = :role where id = :paramName");
             query.setParameter("newName", user.getName());
             query.setParameter("newPassword", user.getPassword());
             query.setParameter("paramName", user.getId());
             query.setParameter("role", user.getRole());
             query.executeUpdate();
-            session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -78,7 +75,8 @@ public class UserDaoHibernateImpl implements UserDao{
     @Override
     public User selectDataById(String id) {
             try {
-                Session session = sessionFactory.openSession();
+//                Session session = sessionFactory.openSession();
+                Session session = sessionFactory.getCurrentSession();
                 Query query = session.createQuery("from User where id =:paramName");
                 query.setParameter("paramName", Long.parseLong(id));
                 return (User) query.uniqueResult();

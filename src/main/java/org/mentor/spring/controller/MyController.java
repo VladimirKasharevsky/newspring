@@ -46,4 +46,24 @@ public class MyController {
         userService.createUser(user);
         return userForm();
     }
+
+    @RequestMapping (value = "/admin/update", method = RequestMethod.GET)
+    public ModelAndView  updateUser(@RequestParam String id) {
+        ModelAndView modelAndView = new ModelAndView();
+        User user = userService.getUserById(id);
+        modelAndView.addObject("id", id);
+        modelAndView.addObject("newName", user.getName());
+        modelAndView.addObject("newPassword", user.getPassword());
+        modelAndView.addObject("role", user.getRole());
+        modelAndView.setViewName("update");
+        return modelAndView;
+    }
+
+    @RequestMapping (value = "/admin/update", method = RequestMethod.POST)
+    public ModelAndView  updateUser(@RequestParam Long id, @RequestParam String newName, @RequestParam String newPassword, @RequestParam String role) {
+        ModelAndView modelAndView = new ModelAndView();
+        User user = new User(id, newName, newPassword, role);
+        userService.updateUser(user);
+        return modelAndView;
+    }
 }
