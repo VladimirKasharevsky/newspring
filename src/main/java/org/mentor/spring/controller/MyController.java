@@ -3,6 +3,7 @@ package org.mentor.spring.controller;
 import org.mentor.spring.model.User;
 import org.mentor.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,8 +38,9 @@ public class MyController {
     }
 
     @RequestMapping(value = "/admin/create", method = RequestMethod.POST)
-    public ModelAndView createUser(@RequestParam String name, @RequestParam String pass, @RequestParam String role) {
-        User user = new User(name, pass, role);
+//    public ModelAndView createUser(@RequestParam String name, @RequestParam String pass, @RequestParam String role) {
+    public ModelAndView createUser(@ModelAttribute("user") User user) {
+//        User user = new User(name, pass, role);
         userService.createUser(user);
         return new ModelAndView("redirect:/");
     }

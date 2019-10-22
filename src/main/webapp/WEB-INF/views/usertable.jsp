@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
 
@@ -31,17 +32,17 @@
 </table>
 
 <h2>Add Info</h2>
-<form action="admin/create" method="post">
- <p> Name:      <input type="text" name="name"/> </p>
- <p> Password:  <input type="text" name="pass"/> </p>
+<form:form  action="admin/create" method="post" modelAttribute="User">
+ <p> Name:      <input type="text" name="name"> </p>
+ <p> Password:  <input type="text" name="password"> </p>
  <p>Role:</p>
  <p><select name="role" value="${role}">
         <option disabled>role</option>
         <option>user</option>
         <option>admin</option>
        </select></p>
-    <input type="submit" value="submit">
-</form>
+    <input type="submit" value="submit"/>
+</form:form>
 
 </body>
 </html>
