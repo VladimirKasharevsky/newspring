@@ -26,7 +26,7 @@ public class MyController {
         ModelAndView modelAndView = new ModelAndView();
         List list = userService.listData();
         modelAndView.addObject("list", list);
-        modelAndView.setViewName("tableserv");
+        modelAndView.setViewName("usertable");
         return modelAndView;
     }
 

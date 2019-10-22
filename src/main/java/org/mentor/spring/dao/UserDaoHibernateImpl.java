@@ -69,7 +69,6 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public User selectDataById(String id) {
         try {
-//                Session session = sessionFactory.openSession();
             Session session = sessionFactory.getCurrentSession();
             Query query = session.createQuery("from User where id =:paramName");
             query.setParameter("paramName", Long.parseLong(id));
