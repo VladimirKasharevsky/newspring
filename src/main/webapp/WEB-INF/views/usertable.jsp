@@ -32,7 +32,7 @@
 </table>
 
 <h2>Add Info</h2>
-<form:form  action="admin/create" method="post" modelAttribute="User">
+<form:form  action="admin/create" method="post">
  <p> Name:      <input type="text" name="name"> </p>
  <p> Password:  <input type="text" name="password"> </p>
  <p>Role:</p>

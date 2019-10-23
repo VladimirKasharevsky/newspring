@@ -38,9 +38,7 @@ public class MyController {
     }
 
     @RequestMapping(value = "/admin/create", method = RequestMethod.POST)
-//    public ModelAndView createUser(@RequestParam String name, @RequestParam String pass, @RequestParam String role) {
     public ModelAndView createUser(@ModelAttribute("user") User user) {
-//        User user = new User(name, pass, role);
         userService.createUser(user);
         return new ModelAndView("redirect:/");
     }
@@ -58,8 +56,7 @@ public class MyController {
     }
 
     @RequestMapping(value = "/admin/update", method = RequestMethod.POST)
-    public ModelAndView updateUser(@RequestParam Long id, @RequestParam String newName, @RequestParam String newPassword, @RequestParam String role) {
-        User user = new User(id, newName, newPassword, role);
+    public ModelAndView updateUser(@ModelAttribute("user") User user) {
         userService.updateUser(user);
         return new ModelAndView("redirect:/");
     }
