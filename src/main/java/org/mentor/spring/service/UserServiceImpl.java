@@ -1,7 +1,6 @@
 package org.mentor.spring.service;
 
 import org.mentor.spring.dao.UserDao;
-import org.mentor.spring.dao.UserDaoHibernateImpl;
 import org.mentor.spring.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +12,11 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserDao userDao;
-//    = new UserDaoHibernateImpl();
+    private final UserDao userDao;
+
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     @Transactional

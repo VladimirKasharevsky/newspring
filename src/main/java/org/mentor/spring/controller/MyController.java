@@ -47,10 +47,7 @@ public class MyController {
     public ModelAndView updateUser(@RequestParam String id) {
         ModelAndView modelAndView = new ModelAndView();
         User user = userService.getUserById(id);
-        modelAndView.addObject("id", id);
-        modelAndView.addObject("newName", user.getName());
-        modelAndView.addObject("newPassword", user.getPassword());
-        modelAndView.addObject("role", user.getRole());
+        modelAndView.addObject("user", user);
         modelAndView.setViewName("update");
         return modelAndView;
     }

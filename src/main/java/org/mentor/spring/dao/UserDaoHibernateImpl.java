@@ -5,12 +5,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.mentor.spring.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-//@Component
 @Repository
 public class UserDaoHibernateImpl implements UserDao {
 
@@ -79,19 +77,19 @@ public class UserDaoHibernateImpl implements UserDao {
         }
     }
 
-    @Override
-    public User selectDataByLoginPassword(User user) {
-        try {
-            Session session = sessionFactory.openSession();
-            Query query = session.createQuery("from User where name =:name and password =:password");
-            query.setParameter("name", user.getName());
-            query.setParameter("password", user.getPassword());
-            return (User) query.uniqueResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+//    @Override
+//    public User selectDataByLoginPassword(User user) {
+//        try {
+//            Session session = sessionFactory.openSession();
+//            Query query = session.createQuery("from User where name =:name and password =:password");
+//            query.setParameter("name", user.getName());
+//            query.setParameter("password", user.getPassword());
+//            return (User) query.uniqueResult();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
 }
 
 

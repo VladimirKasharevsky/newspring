@@ -16,6 +16,5 @@ public interface UserDao {
 
     User selectDataById(String id);
 
-    User selectDataByLoginPassword(User user);
-
+//    User selectDataByLoginPassword(User user);
 }
